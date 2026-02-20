@@ -352,7 +352,7 @@ public class ProposedFlowImpl implements ProposedFlowIface {
 				try {
 					HttpHeaders head = new HttpHeaders();
 					HttpEntity<Object> request = new HttpEntity<>(head);
-					 //AppUtil.validateUrl(subscriberOnboardingData.getSelfieUri());
+					 AppUtil.validateUrl(subscriberOnboardingData.getSelfieUri());
 					ResponseEntity<byte[]> resp = restTemplate.exchange(subscriberOnboardingData.getSelfieUri(),
 							HttpMethod.GET, request, byte[].class);
 					if (resp.getStatusCodeValue() == 200) {
@@ -1741,7 +1741,7 @@ public class ProposedFlowImpl implements ProposedFlowIface {
 			extractFeatureInputDto extractFeatureInputDto = new extractFeatureInputDto();
 			extractFeatureInputDto.setSubscriberPhoto(subscriberPhoto);
 			HttpEntity<Object> request = new HttpEntity<>(extractFeatureInputDto, headers);
-			 //AppUtil.validateUrl(exractFeatures);
+			 AppUtil.validateUrl(exractFeatures);
 			ResponseEntity<ApiResponse> response = restTemplate.exchange(exractFeatures, HttpMethod.POST, request,
 					ApiResponse.class);
 
@@ -1764,10 +1764,10 @@ public class ProposedFlowImpl implements ProposedFlowIface {
 		try {
 			try {
 				logger.info("{}{} - externalEdmsApi request: {}", CLASS, Utility.getMethodName(), edmsUrl);
-				 //AppUtil.validateUrl(edmsUrl);
+				 AppUtil.validateUrl(edmsUrl);
 				HttpHeaders head = new HttpHeaders();
 				HttpEntity<Object> request = new HttpEntity<>(head);
-				 //AppUtil.validateUrl(edmsUrl);
+				 AppUtil.validateUrl(edmsUrl);
 				ResponseEntity<byte[]> resp = restTemplate.exchange(edmsUrl, HttpMethod.GET, request, byte[].class);
 				if (resp.getStatusCodeValue() == 200) {
 					String selfieBase64 = AppUtil.getBase64FromByteArr(resp.getBody());
@@ -1810,7 +1810,7 @@ public class ProposedFlowImpl implements ProposedFlowIface {
 			extractFeatureInputDto extractFeatureInputDto = new extractFeatureInputDto();
 			extractFeatureInputDto.setImage(subscriberPhoto);
 			HttpEntity<Object> request = new HttpEntity<>(extractFeatureInputDto, headers);
-			 //AppUtil.validateUrl(findDetails);
+			 AppUtil.validateUrl(findDetails);
 			ResponseEntity<ApiResponse> response = restTemplate.exchange(findDetails, HttpMethod.POST, request,
 					ApiResponse.class);
 

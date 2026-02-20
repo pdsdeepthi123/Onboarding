@@ -1637,7 +1637,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<Object> reqEntity = new HttpEntity<>(faceFeaturesDto, headers);
 			// Send POST request asynchronously
-			 //AppUtil.validateUrl(faceUrl);
+			 AppUtil.validateUrl(faceUrl);
 			ResponseEntity<ApiResponse> res = restTemplate.exchange(faceUrl, HttpMethod.POST, reqEntity,
 					ApiResponse.class);
 			// Return the result in a CompletableFuture
@@ -1663,7 +1663,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 			HttpHeaders headers2 = new HttpHeaders();
 			headers2.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<Object> reqEntity2 = new HttpEntity<>(jsonString, headers2);
-			 //AppUtil.validateUrl(removeBackGroundFromImageURL);
+			 AppUtil.validateUrl(removeBackGroundFromImageURL);
 			ResponseEntity<ApiResponse> res2 = restTemplate.exchange(removeBackGroundFromImageURL, HttpMethod.POST,
 					reqEntity2, ApiResponse.class);
 			if (res2.getStatusCodeValue() == 200 || res2.getStatusCodeValue() == 201) {
@@ -2100,7 +2100,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 		try {
 			HttpHeaders headersForGet = new HttpHeaders();
 			HttpEntity<Object> requestEntityForGet = new HttpEntity<>(headersForGet);
-			 //AppUtil.validateUrl(uri);
+			 AppUtil.validateUrl(uri);
 			ResponseEntity<Resource> downloadUrlResult = restTemplate.exchange(uri, HttpMethod.GET, requestEntityForGet,
 					Resource.class);
 			byte[] buffer = IOUtils.toByteArray(downloadUrlResult.getBody().getInputStream());
@@ -2130,7 +2130,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 				if (!Objects.isNull(url)) {
 					HttpHeaders headersForGet = new HttpHeaders();
 					HttpEntity<Object> requestEntityForGet = new HttpEntity<>(headersForGet);
-					 //AppUtil.validateUrl(url);
+					 AppUtil.validateUrl(url);
 					ResponseEntity<Resource> downloadUrlResult = restTemplate.exchange(url, HttpMethod.GET,
 							requestEntityForGet, Resource.class);
 
@@ -2223,7 +2223,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 				if (!Objects.isNull(url)) {
 					HttpHeaders headersForGet = new HttpHeaders();
 					HttpEntity<Object> requestEntityForGet = new HttpEntity<>(headersForGet);
-					 //AppUtil.validateUrl(url);
+					 AppUtil.validateUrl(url);
 					ResponseEntity<Resource> downloadUrlResult = restTemplate.exchange(url, HttpMethod.GET,
 							requestEntityForGet, Resource.class);
 
@@ -2715,7 +2715,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 
 			logger.info(CLASS + "sendSMSIND req for restTemplate smsUrlWithBody {} and requestEntity {}",
 					smsUrlWithBody, requestEntity);
-			 //AppUtil.validateUrl(smsUrlWithBody);
+			 AppUtil.validateUrl(smsUrlWithBody);
 			ResponseEntity<Object> res = restTemplate.exchange(smsUrlWithBody, HttpMethod.GET, requestEntity,
 					Object.class);
 			String smsResponse = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(res.getBody());
@@ -2752,7 +2752,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 
 			logger.info(CLASS + "sendSMSIND req for restTemplate smsUrlWithBody {} and requestEntity {}",
 					smsUrlWithBody, requestEntity);
-			 //AppUtil.validateUrl(smsUrlWithBody);
+			 AppUtil.validateUrl(smsUrlWithBody);
 			ResponseEntity<Object> res = restTemplate.exchange(smsUrlWithBody, HttpMethod.GET, requestEntity,
 					Object.class);
 			String smsResponse = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(res.getBody());
@@ -2789,7 +2789,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 		headers.set("access_token", getToken());
 		HttpEntity<Object> requestEntity = new HttpEntity<>(smsDTO, headers);
 		try {
-			 //AppUtil.validateUrl(url);
+			 AppUtil.validateUrl(url);
 			logger.info(CLASS + " sendSMSUGA req for restTemplate url {} and requestEntity {} ", url, requestEntity);
 			ResponseEntity<ApiResponse> res = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
 					ApiResponse.class);
@@ -2820,7 +2820,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 //
 		HttpEntity<Object> requestEntity = new HttpEntity<>(uaeSmsBody);
 		try {
-			 //AppUtil.validateUrl(url);
+			 AppUtil.validateUrl(url);
 			logger.info(CLASS + "sendSMSUAE req for restTemplate url {} and requestEntity {} ", url, requestEntity);
 			ResponseEntity<Object> res = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Object.class);
 			ApiResponse api = new ApiResponse();
@@ -2855,7 +2855,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 		HttpEntity<Object> requestEntity = new HttpEntity<>(headers);
 		try {
 			logger.info(CLASS + "getToken req for restTemplate {}", requestEntity);
-			 //AppUtil.validateUrl(url);
+			 AppUtil.validateUrl(url);
 			ResponseEntity<String> res = restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
 			logger.info(CLASS + "getToken res for restTemplate {}", res);
 			return res.getBody();
@@ -2896,7 +2896,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<Object> requestEntity = new HttpEntity<>(emailReqDto, headers);
 			System.out.println("requestEntity >> " + requestEntity);
-			 //AppUtil.validateUrl(url);
+			 AppUtil.validateUrl(url);
 			ResponseEntity<ApiResponse> res = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
 					ApiResponse.class);
 			System.out.println("res >> " + res);
@@ -3600,7 +3600,7 @@ public class SubscriberServiceImpl implements SubscriberServiceIface {
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<TotpDto> requestEntity = new HttpEntity<>(totpDto, headers);
-			 //AppUtil.validateUrl(dtportal);
+			 AppUtil.validateUrl(dtportal);
 			res = restTemplate.exchange(dtportal, HttpMethod.POST, requestEntity, ApiResponse.class);
 			// System.out.println("status code - " + res.getStatusCodeValue());
 			if (res.getStatusCodeValue() == 400 || res.getStatusCodeValue() == 401 || res.getStatusCodeValue() == 403

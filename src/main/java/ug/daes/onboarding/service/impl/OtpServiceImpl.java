@@ -335,7 +335,7 @@ public class OtpServiceImpl implements OtpServiceIface {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<Object> requestEntity = new HttpEntity<>(emailReqDto, headers);
 			System.out.println("requestEntity >> " + requestEntity);
-			 //AppUtil.validateUrl(url);
+			 AppUtil.validateUrl(url);
 			ResponseEntity<ApiResponse> res = restTemplate.exchange(url, HttpMethod.POST, requestEntity,ApiResponse.class);
 			System.out.println("res >> " + res);
 			if(res.getStatusCodeValue() == 200) {
@@ -408,7 +408,7 @@ public class OtpServiceImpl implements OtpServiceIface {
 
 			logger.info(CLASS + "sendSMSIND >> req for restTemplate >> smsUrlWithBody {} and requestEntity {}",smsUrlWithBody, requestEntity);
 
-			 //AppUtil.validateUrl(smsUrlWithBody);
+			 AppUtil.validateUrl(smsUrlWithBody);
 			ResponseEntity<Object> res = restTemplate.exchange(smsUrlWithBody, HttpMethod.GET, requestEntity,
 					Object.class);
 			String smsResponse = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(res.getBody());
@@ -447,7 +447,7 @@ public class OtpServiceImpl implements OtpServiceIface {
 		headers.set("access_token", getToken());
 		HttpEntity<Object> requestEntity = new HttpEntity<>(smsDTO, headers);
 		try {
-			 //AppUtil.validateUrl(url);
+			 AppUtil.validateUrl(url);
 			logger.info("sendSMSUGA() >> req for restTemplate >> url {} and requestEntity {}", url,requestEntity);
 			ResponseEntity<ApiResponse> res = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
 					ApiResponse.class);
@@ -478,7 +478,7 @@ public class OtpServiceImpl implements OtpServiceIface {
 		headers.set("access_token", getToken());
 		HttpEntity<Object> requestEntity = new HttpEntity<>(uaeSmsBody, headers);
 		try {
-			 //AppUtil.validateUrl(url);
+			 AppUtil.validateUrl(url);
 			logger.info("sendSMSUAE() >> req for restTemplate >> url {} and requestEntity {}", url,requestEntity);
 			ResponseEntity<Object> res = restTemplate.exchange(url, HttpMethod.POST, requestEntity, Object.class);
 			ApiResponse api = new ApiResponse();
@@ -535,7 +535,7 @@ public class OtpServiceImpl implements OtpServiceIface {
 		headers.set("daes-authorization", basicAuth);
 		HttpEntity<Object> requestEntity = new HttpEntity<>(headers);
 		try {
-			 //AppUtil.validateUrl(url);
+			 AppUtil.validateUrl(url);
 			logger.info("getToken() >> req for restTemplate {} ",requestEntity);
 			ResponseEntity<String> res = restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
 			logger.info("getToken() >> res for restTemplate {}", res);

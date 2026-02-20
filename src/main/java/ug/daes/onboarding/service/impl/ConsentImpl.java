@@ -99,7 +99,7 @@ public class ConsentImpl implements ConsentIface {
                     HttpHeaders headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     HttpEntity<Object> reqEntity1 = new HttpEntity<>(signedDataDto, headers);
-//                    // //AppUtil.validateUrl(url);
+//                    // AppUtil.validateUrl(url);
                     ResponseEntity<ApiResponse> res1 = restTemplate.exchange(url, HttpMethod.POST, reqEntity1, ApiResponse.class);
                     if (!res1.getBody().isSuccess()) {
                         System.out.println(res1.getBody().getMessage());

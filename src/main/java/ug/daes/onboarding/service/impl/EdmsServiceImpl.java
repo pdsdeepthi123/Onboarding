@@ -102,7 +102,7 @@ public class EdmsServiceImpl {
 			HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(body, headers);
 			logger.info(CLASS + " saveSelfieToEdms req for get DocId docIdUrl {} and requestEntity {} ", docIdUrl,
 					requestEntity);
-			 //AppUtil.validateUrl(docIdUrl);
+			 AppUtil.validateUrl(docIdUrl);
 			ResponseEntity<DocumentResponse> documentId = restTemplate.exchange(docIdUrl, HttpMethod.POST,
 					requestEntity, DocumentResponse.class);
 			logger.info(CLASS + " saveSelfieToEdms res for get DocId {}", documentId);
@@ -117,7 +117,7 @@ public class EdmsServiceImpl {
 
 			logger.info(CLASS + " saveSelfieToEdms req for saveFileWithDocId docIdAndFileUrl {} and requestEntity4 {}",
 					docIdAndFileUrl, requestEntity4);
-			 //AppUtil.validateUrl(docIdAndFileUrl);
+			 AppUtil.validateUrl(docIdAndFileUrl);
 			ResponseEntity<ApiResponse> result = restTemplate.exchange(docIdAndFileUrl, HttpMethod.POST, requestEntity4,
 					ApiResponse.class);
 			logger.info(CLASS + " saveSelfieToEdms res for saveFileWithDocId {}", result);
@@ -240,7 +240,7 @@ public class EdmsServiceImpl {
 	        HttpHeaders headers = new HttpHeaders();
 	        headers.setContentType(MediaType.MULTIPART_FORM_DATA);
 	        HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(bodyMap, headers);
-			 //AppUtil.validateUrl(docIdAndFileUrl);
+			 AppUtil.validateUrl(docIdAndFileUrl);
 	        return CompletableFuture.supplyAsync(() ->
 	            restTemplate.exchange(docIdAndFileUrl, HttpMethod.POST, requestEntity, ApiResponse.class)
 	        ).thenApply(result -> {
@@ -306,7 +306,7 @@ public class EdmsServiceImpl {
 
 	    return CompletableFuture.supplyAsync(() -> {
 	        try {
-				 //AppUtil.validateUrl(docIdAndFileUrl);
+				 AppUtil.validateUrl(docIdAndFileUrl);
 	            return restTemplate.exchange(docIdAndFileUrl, HttpMethod.POST, requestEntity, ApiResponse.class);
 	        } catch (HttpClientErrorException e) {
 	            logger.error("Unexpected exception", e);
@@ -499,7 +499,7 @@ public class EdmsServiceImpl {
 			HttpEntity<MultiValueMap<String, Object>> requestEntity = new HttpEntity<>(bodyMap, headers);
 			logger.info(CLASS + " saveVideoToEdms req for get DocId docIdUrl {} and requestEntity {}", docIdUrl,
 					requestEntity);
-			 //AppUtil.validateUrl(docIdUrl);
+			 AppUtil.validateUrl(docIdUrl);
 			ResponseEntity<DocumentResponse> documentId = restTemplate.exchange(docIdUrl, HttpMethod.POST,
 					requestEntity, DocumentResponse.class);
 			logger.info(CLASS + " saveVideoToEdms res for get DocId {}", documentId);
@@ -515,7 +515,7 @@ public class EdmsServiceImpl {
 			HttpEntity<MultiValueMap<String, Object>> requestEntity1 = new HttpEntity<>(bodyMap1, headers1);
 			logger.info(CLASS + " saveVideoToEdms req for saveFileWithDocId docIdAndFileUrl {} and requestEntity1 {}",
 					docIdAndFileUrl, requestEntity1);
-			 //AppUtil.validateUrl(docIdAndFileUrl);
+			 AppUtil.validateUrl(docIdAndFileUrl);
 			ResponseEntity<ApiResponse> result = restTemplate.exchange(docIdAndFileUrl, HttpMethod.POST, requestEntity1,
 					ApiResponse.class);
 			logger.info(CLASS + " saveVideoToEdms res for saveFileWithDocId {}", result);

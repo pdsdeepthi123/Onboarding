@@ -166,7 +166,7 @@ public class TestOTPServiceImpl implements TestOTPServiceIface{
 		headers.set("access_token", getToken());
 		HttpEntity<Object> requestEntity = new HttpEntity<>(smsDTO, headers);
 		try {
-			 //AppUtil.validateUrl(url);
+			 AppUtil.validateUrl(url);
 			//logger.info("sendSMSUGA() >> req for restTemplate >> url {} and requestEntity {}", url,requestEntity);
 			ResponseEntity<ApiResponse> res = restTemplate.exchange(url, HttpMethod.POST, requestEntity,
 					ApiResponse.class);
@@ -195,7 +195,7 @@ public class TestOTPServiceImpl implements TestOTPServiceIface{
 		headers.set("daes-authorization", basicAuth);
 		HttpEntity<Object> requestEntity = new HttpEntity<>(headers);
 		try {
-			 //AppUtil.validateUrl(url);
+			 AppUtil.validateUrl(url);
 			//logger.info("getToken() >> req for restTemplate {} ",requestEntity);
 			ResponseEntity<String> res = restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
 			//logger.info("getToken() >> res for restTemplate {}", res);
@@ -215,7 +215,7 @@ public class TestOTPServiceImpl implements TestOTPServiceIface{
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<Object> requestEntity = new HttpEntity<>(emailReqDto, headers);
 			System.out.println("requestEntity >> " + requestEntity);
-			 //AppUtil.validateUrl(url);
+			 AppUtil.validateUrl(url);
 			ResponseEntity<ApiResponse> res = restTemplate.exchange(url, HttpMethod.POST, requestEntity,ApiResponse.class);
 			System.out.println("res >> " + res);
 			if(res.getStatusCodeValue() == 200) {
@@ -280,7 +280,7 @@ public class TestOTPServiceImpl implements TestOTPServiceIface{
 			//System.out.println("notificationReqBody in PaymentImpl :: " + notificationBody.getData());
 			HttpEntity<Object> requestEntity = new HttpEntity<>(notificationBody, headers);
 			System.out.println("RequestToken :" + requestEntity);
-			 //AppUtil.validateUrl(notificationUrl);
+			 AppUtil.validateUrl(notificationUrl);
 			ResponseEntity<Object> res = restTemplate.exchange(notificationUrl, HttpMethod.POST, requestEntity,
 						Object.class);
 			//System.out.println(res.getStatusCodeValue()+"-- res -- "+res.getBody());
